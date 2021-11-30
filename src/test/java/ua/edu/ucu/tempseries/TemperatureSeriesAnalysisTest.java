@@ -18,6 +18,17 @@ public class TemperatureSeriesAnalysisTest {
         assertEquals(expResult, actualResult, 0.00001);
     }
 
+    @Test
+    public void testAverageNotFilledArray() {
+        double[] temperatureSeries = {3.0, -5.0, 1.0, 5.0};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        double expResult = 1.0;
+
+        seriesAnalysis.addTemps(1.0);
+        double actualResult = seriesAnalysis.average();
+
+        assertEquals(expResult, actualResult, 0.00001);
+    }
 
     @Test
     public void testAverageWithOneElementArray() {
