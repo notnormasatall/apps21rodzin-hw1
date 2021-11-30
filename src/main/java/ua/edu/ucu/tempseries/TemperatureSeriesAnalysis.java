@@ -5,9 +5,9 @@ import java.util.InputMismatchException;
 import java.util.Objects;
 
 public class TemperatureSeriesAnalysis {
-    static final int minimum = -273;
-    static final int maximum = 273;
-    int lastIdx = -1;
+    static final int MINIMUM = -273;
+    static final int MAXIMUM = 273;
+    private int lastIdx = -1;
     private double[] temperatureSeries;
 
     public TemperatureSeriesAnalysis() {
@@ -27,7 +27,7 @@ public class TemperatureSeriesAnalysis {
         boolean raise = false;
 
         for (double temp: temperatureSeries) {
-            if (temp < minimum) {
+            if (temp < MINIMUM) {
                 raise = true;
             } else {
                 tempsCopy[i] = temp;
@@ -38,7 +38,7 @@ public class TemperatureSeriesAnalysis {
         temperatureSeries = tempsCopy;
         lastIdx = temperatureSeries.length-1;
         if (raise) {
-            throw new InputMismatchException("False value (less than -273 degrees)!");
+            throw new InputMismatchException("False value!");
         }
     }
 
@@ -70,17 +70,18 @@ public class TemperatureSeriesAnalysis {
             if (i > lastIdx) {
                 break;
             }
-            sum += Math.pow(Math.abs(temperatureSeries[i]-average), 2);
+            double x = Math.abs(temperatureSeries[i]-average);
+            sum += x*x;
         }
         return Math.sqrt(sum / (lastIdx+1));
     }
 
     public double min() {
-        return findTempClosestToValue(minimum);
+        return findTempClosestToValue(MINIMUM);
     }
 
     public double max() {
-        return findTempClosestToValue(maximum);
+        return findTempClosestToValue(MAXIMUM);
     }
 
     public double findTempClosestToZero() {
@@ -178,7 +179,7 @@ public class TemperatureSeriesAnalysis {
                 temperatureSeries = copy;
             }
 
-            if (temp < minimum) {
+            if (temp < MINIMUM) {
                 raise = true;
             } else {
                 temperatureSeries[lastIdx+1] = temp;
@@ -187,7 +188,7 @@ public class TemperatureSeriesAnalysis {
         }
 
         if (raise) {
-            throw new InputMismatchException("False value (less than -273 degrees)!");
+            throw new InputMismatchException("False value!");
         }
 
         return findSum(temperatureSeries);
