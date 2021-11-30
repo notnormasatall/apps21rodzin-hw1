@@ -1,13 +1,10 @@
 package ua.edu.ucu.tempseries;
 
-import lombok.Setter;
-
 import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Objects;
 
 public class TemperatureSeriesAnalysis {
-    @Setter
     private double[] temperatureSeries;
     int lastIdx = -1;
 
