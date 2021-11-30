@@ -5,12 +5,21 @@ import java.util.InputMismatchException;
 import java.util.Objects;
 
 public class TemperatureSeriesAnalysis {
-    private double[] temperatureSeries;
+    static final int minimum = -273;
+    static final int maximum = 273;
     int lastIdx = -1;
+    private double[] temperatureSeries;
 
     public TemperatureSeriesAnalysis() {
         temperatureSeries = new double[]{};
     }
+
+    public TemperatureSeriesAnalysis(double[] temperature) {
+        temperatureSeries = Arrays.copyOf(temperature, temperature.length);
+        lastIdx = temperature.length-1;
+        testTemps();
+    }
+
 
     private void testTemps() {
         double[] tempsCopy = new double[temperatureSeries.length];
@@ -18,7 +27,7 @@ public class TemperatureSeriesAnalysis {
         boolean raise = false;
 
         for (double temp: temperatureSeries) {
-            if (temp < -273) {
+            if (temp < minimum) {
                 raise = true;
             } else {
                 tempsCopy[i] = temp;
@@ -31,12 +40,6 @@ public class TemperatureSeriesAnalysis {
         if (raise) {
             throw new InputMismatchException("False value (less than -273 degrees)!");
         }
-    }
-
-    public TemperatureSeriesAnalysis(double[] temperature) {
-        temperatureSeries = Arrays.copyOf(temperature, temperature.length);
-        lastIdx = temperature.length-1;
-        testTemps();
     }
 
     public double average() {
@@ -52,7 +55,6 @@ public class TemperatureSeriesAnalysis {
             sum += temperatureSeries[i];
         }
         return sum / (lastIdx+1);
-
     }
 
     public double deviation() {
@@ -74,11 +76,11 @@ public class TemperatureSeriesAnalysis {
     }
 
     public double min() {
-        return findTempClosestToValue(-273);
+        return findTempClosestToValue(minimum);
     }
 
     public double max() {
-        return findTempClosestToValue(273);
+        return findTempClosestToValue(maximum);
     }
 
     public double findTempClosestToZero() {
@@ -176,7 +178,7 @@ public class TemperatureSeriesAnalysis {
                 temperatureSeries = copy;
             }
 
-            if (temp < -273) {
+            if (temp < minimum) {
                 raise = true;
             } else {
                 temperatureSeries[lastIdx+1] = temp;
