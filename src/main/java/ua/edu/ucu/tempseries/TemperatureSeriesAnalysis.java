@@ -67,9 +67,6 @@ public class TemperatureSeriesAnalysis {
         }
 
         for (int i = 0; i < temperatureSeries.length; i++) {
-            if (i > lastIdx) {
-                break;
-            }
             double x = Math.abs(temperatureSeries[i]-average);
             sum += x*x;
         }
