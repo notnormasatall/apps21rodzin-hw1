@@ -139,7 +139,7 @@ public class TemperatureSeriesAnalysis {
                 }
             }
         }
-
+        reduced = Arrays.copyOf(reduced, i);
         return reduced;
     }
 

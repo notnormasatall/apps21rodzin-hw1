@@ -131,4 +131,37 @@ public class TemperatureSeriesAnalysisTest {
         assertEquals(expResult.getMaxTemp(), actualResult.getMaxTemp(), 0.00001);
 
     }
+
+    @Test
+    public void testFindTempsLessThen() {
+        double[] temperatureSeries = {3.0, -5.0, 1.0, 5.0};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        double expResult = 2;
+
+        double[] actualResult = seriesAnalysis.findTempsLessThen(2.0);
+
+        assertEquals(expResult, actualResult.length, 0.00001);
+    }
+
+    @Test
+    public void testFindTempsGreaterThen() {
+        double[] temperatureSeries = {3.0, -5.0, 1.0, 5.0};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        double expResult = 2;
+
+        double[] actualResult = seriesAnalysis.findTempsGreaterThen(2.0);
+
+        assertEquals(expResult, actualResult.length, 0.00001);
+    }
+
+    @Test
+    public void testFindClosestToZero() {
+        double[] temperatureSeries = {3.0, -5.0, 1.0, 5.0};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        double expResult = 1.0;
+
+        double actualResult = seriesAnalysis.findTempClosestToZero();
+
+        assertEquals(expResult, actualResult, 0.00001);
+    }
 }
