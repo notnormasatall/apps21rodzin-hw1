@@ -62,10 +62,6 @@ public class TemperatureSeriesAnalysis {
         double average = average();
         double sum = 0;
 
-        if (temperatureSeries.length == 0) {
-            throw new IllegalArgumentException("No elements in array.");
-        }
-
         for (int i = 0; i < temperatureSeries.length; i++) {
             double x = Math.abs(temperatureSeries[i]-average);
             sum += x*x;
