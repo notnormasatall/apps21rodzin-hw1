@@ -53,7 +53,7 @@ public class TemperatureSeriesAnalysisTest {
         seriesAnalysis.average();
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void testDeviationWithEmptyArray() {
         double[] temperatureSeries = {};
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
