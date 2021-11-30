@@ -138,9 +138,6 @@ public class TemperatureSeriesAnalysis {
     }
 
     public TempSummaryStatistics summaryStatistics() {
-        if (temperatureSeries.length == 0) {
-            throw new IllegalArgumentException("No elements in array.");
-        }
         return new TempSummaryStatistics(average(), deviation(), min(), max());
     }
 
@@ -192,9 +189,6 @@ public class TemperatureSeriesAnalysis {
         double[] newTemps = new double[newSize];
 
         for (int i = 0; i < oldArray.length; i++) {
-            if (i > lastIdx) {
-                break;
-            }
             newTemps[i] = oldArray[i];
         }
 
