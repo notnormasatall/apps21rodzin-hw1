@@ -151,8 +151,8 @@ public class TemperatureSeriesAnalysis {
     private int findSum(double[] temps) {
         int sum = 0;
 
-        for (int i=0; i < temps.length; i++) {
-            if (i==lastIdx+1) {
+        for (int i = 0; i < temps.length; i++) {
+            if (i == lastIdx+1) {
                 break;
             } else {
                 sum += temps[i];
@@ -195,7 +195,7 @@ public class TemperatureSeriesAnalysis {
         int newSize = oldArray.length*2;
         double[] newTemps = new double[newSize];
 
-        for (int i=0; i<oldArray.length; i++) {
+        for (int i = 0; i<oldArray.length; i++) {
             if (i > lastIdx) {
                 break;
             }
