@@ -197,7 +197,7 @@ public class TemperatureSeriesAnalysis {
         int newSize = oldArray.length*2;
         double[] newTemps = new double[newSize];
 
-        for (int i = 0; i<oldArray.length; i++) {
+        for (int i = 0; i < oldArray.length; i++) {
             if (i > lastIdx) {
                 break;
             }

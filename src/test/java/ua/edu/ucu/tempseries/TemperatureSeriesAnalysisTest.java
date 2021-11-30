@@ -62,6 +62,7 @@ public class TemperatureSeriesAnalysisTest {
         assertEquals(expResult, actualResult, 0.00001);
     }
 
+
     @Test(expected = InputMismatchException.class)
     public void testFalseInitialization() {
         double[] temperatureSeries = {3.0, -300.0, 1.0, 5.0};
@@ -82,6 +83,13 @@ public class TemperatureSeriesAnalysisTest {
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
 
         assertEquals(309,seriesAnalysis.addTemps(300.0));
+    }
+
+    @Test
+    public void testAddLengthOne() {
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis();
+
+        assertEquals(300,seriesAnalysis.addTemps(300.0));
     }
 
     @Test
