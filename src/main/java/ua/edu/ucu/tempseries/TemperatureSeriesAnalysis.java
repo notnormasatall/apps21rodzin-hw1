@@ -94,7 +94,7 @@ public class TemperatureSeriesAnalysis {
             if (Math.abs(tempValue - temperature) < dist) {
                 dist = Math.abs(tempValue - temperature);
                 closestVal = temperature;
-            } else if  (Math.abs(tempValue - temperature) == dist) {
+            } else if  (Math.abs(tempValue - temperature) - dist == 0) {
                 if (temperature > closestVal) {
                     closestVal = temperature;
                 }
