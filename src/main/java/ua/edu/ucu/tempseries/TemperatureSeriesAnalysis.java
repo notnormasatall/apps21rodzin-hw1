@@ -49,12 +49,9 @@ public class TemperatureSeriesAnalysis {
 
         int sum = 0;
         for (int i = 0; i < temperatureSeries.length; i++) {
-            if (i > lastIdx) {
-                break;
-            }
             sum += temperatureSeries[i];
         }
-        return sum / (lastIdx+1);
+        return sum / temperatureSeries.length;
     }
 
     public double deviation() {
@@ -145,12 +142,8 @@ public class TemperatureSeriesAnalysis {
         int sum = 0;
 
         for (int i = 0; i < temps.length; i++) {
-            if (i == lastIdx+1) {
-                break;
-            } else {
                 sum += temps[i];
             }
-        }
 
         return sum;
     }
@@ -181,6 +174,7 @@ public class TemperatureSeriesAnalysis {
             throw new InputMismatchException("False value!");
         }
 
+        temperatureSeries = Arrays.copyOf(temperatureSeries, lastIdx+1);
         return findSum(temperatureSeries);
     }
 
@@ -188,9 +182,7 @@ public class TemperatureSeriesAnalysis {
         int newSize = oldArray.length*2;
         double[] newTemps = new double[newSize];
 
-        for (int i = 0; i < oldArray.length; i++) {
-            newTemps[i] = oldArray[i];
-        }
+        System.arraycopy(oldArray, 0, newTemps, 0, oldArray.length);
 
         return newTemps;
     }
